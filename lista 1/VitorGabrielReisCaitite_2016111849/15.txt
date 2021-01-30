@@ -1,0 +1,16 @@
+Exercise 15:
+
+(a) O erro aconteceu pois a expressão ficou imcompleta. A expressão definida em SML
+ é <if ... then ... else ...>. Logo faz-se necessário definir o else no exemplo dado.
+
+(b) Em SML o operador + não é definido para operar com dois tipos diferentes simultâneamente.
+Ou seja, apesar de o operador + ser sobrecarregado e suportar casos como: int * int -> int ou 
+ou real * real -> real, ele não suporta casos onde um operando seja real e o outro inteiro.
+
+(c) Ocorreu um problema de redundância, ao tentar especificar um segundo subtipo de parâmetro
+que já está totalmente emglobado pelo primeiro. Nesse caso o problema foi a ordem como a função 
+foi definida, na primeira linha pode-se notar o parâmetro n que é do tipo inteiro e consequentemente
+já engloba todos os inteiros (inclusive 0). Já na segunda linha especificou-se o parâmetro 0, porém
+0 já está englobado completamente na especificação da primeira linha da função. Dessa forma ocorre 
+uma redundância. Uma forma de corrigir isso seria especificar primeiramente o caso em que o parâmetro 
+é 0, e só então o caso geral.

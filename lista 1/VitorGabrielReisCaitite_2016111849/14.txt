@@ -1,0 +1,15 @@
+Exercise 14:
+
+(a) int * real -> real
+
+(b) Operador + à esquerda: int * real -> real,
+    Operador + à direita: real * int -> real
+
+(c) Operador + à direita (r+i): real * int -> real
+    Operador + a esquerda i+r : int * real -> real
+
+(d) Sendo o operador + mais a direita o 1° operador + e o mais a esquerda o 4° operador +, temos:
+-   O 4° operador + é do tipo: real * int -> real  
+-   O 1° operador + é do tipo: int * int -> int
+-   O 2° operador + é do tipo: int * real -> real
+-   O 3° operador + é do tipo: real * real -> real
