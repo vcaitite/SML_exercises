@@ -1,0 +1,15 @@
+1) Considerando programa em uma linguagem de programação genérica (mostrado no enunciado).
+Qual é a saı́da desse programa (linha 12) ao executar p:
+
+(a) Caso essa linguagem possua escopo estático?
+
+R. Nesse caso a saída será 1. Pois esse valor é referente ao valor do x definido dentro do 
+escopo da função r. Obs.: a operação realizada na função q é sobre o x definido no escopo 
+da função p. 
+
+(b) Caso esta linguagem possua escopo dinâmico?
+
+R. No caso de a linguagem possuir um escopo dinâmico, a vinculação do tipo de dados de uma 
+variável ocorre durante a execução ou é alterada durante a execução do programa. Assim, 
+o valor de saída será 2, pois ao se chamar a função q, o valor de x é 1, então soma-se 1
+e logo depois tem-se a saída (write()), consequentemente retornando 2. 

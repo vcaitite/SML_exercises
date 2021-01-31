@@ -1,6 +1,6 @@
 (* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Developer: Vítor Caitité - 2016111849
-Exercise 4 - 
+Exercise 4
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 datatype UnOp = Not;
 datatype BinOp = Add | Sub | Mul | Gt | Eq | Or;
@@ -17,12 +17,16 @@ fun simplify (IConst e) = (IConst e)
   | simplify (Op2 (Sub, e1, e2)) = if (e1 = e2) then IConst 0 else Op2(Sub, (simplify e1), (simplify e2))
   | simplify (Op2 (Or, e1, e2)) = if (e1 = e2) then simplify e1 else Op2(Or, simplify e1, simplify e2)
   | simplify (Op1 (Not, Op1(Not, e))) = simplify e
-  | simplify (Op2 (e, Op2(op1, (IConst e1), (IConst e2)), Op2(op2, (IConst e3), (IConst e4)))) = (Op2 (e, Op2(op1, (IConst e1), (IConst e2)), Op2(op2, (IConst e3), (IConst e4))))
-  | simplify (Op2 (e, Op2(op1, (IConst e1), (IConst e2)), e3)) = (Op2 (e, Op2(op1, (IConst e1), (IConst e2)), (simplify e3)))
-  | simplify (Op2 (e, e1, Op2(op2, (IConst e2), (IConst e3)))) = (Op2 ((simplify e1), Op2(op2, (IConst e2), (IConst e3))))
   | simplify (Op2 (e, (IConst e1), (IConst e2))) = (Op2 (e, (IConst e1), (IConst e2)))
-  | simplify (Op2 (e, e1, e2)) = (simplify (Op2(e, simplify e1, simplify e2)))
+  | simplify (Op2 (e, e1, IConst e2)) = (simplify (Op2 (e, simplify e1, IConst e2)))
+  | simplify (Op2 (e, IConst e1, e2)) = (simplify (Op2 (e, IConst e1, simplify e2)))
+  | simplify (Op2 (e, e1, e2)) = simplify (Op2(e, simplify e1, simplify e2))
   | simplify (e) = e;  
 
-val e1 = Op2(Mul, Op2(Add, IConst 1, IConst 2), Op2(Add, IConst 9, IConst 1));
+
+val e1 = Op2(Mul, Op2(Add, IConst 1, IConst 0), Op2(Add, IConst 9, IConst 0));
 simplify e1;
+
+val e2 = Op2 (Mul, Op2 (Add, IConst 1, IConst 0), Op2 (Add, Op2 (Or, IConst 10, IConst 12), IConst 0)): Sexpr;  
+simplify e2;  
+    
