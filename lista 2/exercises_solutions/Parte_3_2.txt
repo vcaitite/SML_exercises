@@ -1,0 +1,49 @@
+2) Considerando o programa, escrito em SML, mostrado no enunciado:
+
+(a) Enumere cada bloco que esse programa contém. Exemplo: Escopo de g = bloco 1,
+etc.
+
+R. 
+Escopo de g = bloco 1
+Escopo do let de g = bloco 2
+Escopo de f = bloco 3
+Escopo de h = bloco 4
+Escopo do let de h = bloco 5
+
+(b) Quais são os nomes definidos nesse programa?
+
+R. Nomes definidos: x, y, inc, z, f, h, g. 
+
+(c) Para cada definição, descreva seu escopo em termos dos números de blocos que
+você definiu no item a.
+
+R. A definição de x pertence a todo escopo de g (bloco 1), e como todos os outros 
+blocos estão contidos nesse, então x está definido para todos os blocos. 
+Já a definição de y pertence apenas ao bloco 3, que compreende a função f.
+No caso de inc, precisamos fazer uma alaiação mais cuidadosa, pois na verdade existem
+dois inc, um deles (localizado na linha 7) pertence somente ao bloco 5, estando,
+portanto, definido apenas dentro do let de h. Já o outro inc (linha 4) está definido 
+para os blocos 2, 3, 4 e também para o bloco 5 (seria possível que na linha 7 tivessemos
+por exemplo: val inc = inc. Porém, é importante destacar que após a definição de inc 
+dentro do bloco 5, qualquer menção a ele seria referente ao inc definido na linha 7).
+O escopo de z é o bloco 4, estando assim definido apenas dentro da função h.
+Por fim, a variável de função f está definida para os blocos 2, 3, 4 e 5; e a 
+variável de função h para os blocos 2, 4 e 5. 
+Conseiderando-se, ainda, a variável de função g, ela está definida para todos os blocos
+citados em (a).
+
+
+(d) Tente responder sem executar o programa. Qual é o valor de g 5? Qual seria esse
+valor se SML possuı́sse escopo dinâmico? Explique o motivo de esses valores serem
+diferentes.
+
+R. Como SML possui escopo estático o valor de g 5 é 6. De forma resumida, do jeito 
+que a função está escrita e o tipo de escopo de SML, o resultado de g será a entrada
+somada ao valor de inc=1. Contudo, caso o escopo fosse dinâmico, então o valor de inc
+na funão f seria 2 (valor de inc definido antes de se invocar f z). Dessa maneira,
+a saída seria 7, caso o SML possuísse escopo dinâmico.   
+Sumarizando, o motivo dos resultados serem diferente se deve ao fato de, no caso o 
+escopo ser estático então o valor de inc para a função f é 1, e no caso de o escopo 
+ser dinâmico, esse valor seria 2. Isso ocorre pois no escopo dinâmico a associação
+entre usos e definições das variáveis depende da pilha de chamadas no momento do uso
+da variável.
