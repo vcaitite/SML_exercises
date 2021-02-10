@@ -1,3 +1,5 @@
+Parte 3 - Exercício 1:
+
 1) Considerando programa em uma linguagem de programação genérica (mostrado no enunciado).
 Qual é a saı́da desse programa (linha 12) ao executar p:
 

@@ -17,6 +17,3 @@ fun eval (RConst i) = i
   | eval (PCirculo r) = 2.0 * Math.pi * (eval r) 
   | eval (PRetangulo(edge1, edge2)) = 2.0 * (eval edge1) + 2.0 * (eval edge2)
   | eval (PTriangulo(edge1, edge2, edge3)) = (eval edge1) + (eval edge2) + (eval edge3);
-
-val p = PQuadrado(RConst 4.0);
-eval p;

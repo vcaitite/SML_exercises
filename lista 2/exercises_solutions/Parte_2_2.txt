@@ -1,0 +1,8 @@
+Parte 2 - Exercício 2:
+
+2) Considere a função de interpretação de expressões Booleanas de WHILE, B 
+(Tabela 1.2), e suponha que s x = 3. Determine B[[¬(x = 1)]].
+
+(B[[¬(x = 1)]], s x = 3) -> tt
+
+Pode-se chear a essa conclusão observando as expressões 3 e 5 da tabela 1.2.

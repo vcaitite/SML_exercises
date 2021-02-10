@@ -1,0 +1,7 @@
+Parte 2 - Exercício 3:
+
+3) Defina uma substituição para expressões Booleanas de WHILE: b[y → a0] deve ser a
+expressão Booleana correspondente a b exceto que todas as ocorrências da variável y
+são substituı́das pela expressão aritmética a0.
+
+R.

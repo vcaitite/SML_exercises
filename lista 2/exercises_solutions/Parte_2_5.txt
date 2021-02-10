@@ -1,0 +1,15 @@
+Parte 2 - Exercício 5:
+
+Considere os seguintes programas:
+. while ¬(x=1) do (y:=y*x; x:=x-1)
+. while 1 ≤ x do (y:=y*x; x:=x-1)
+. while true do skip
+
+Para cada um deles determine se eles sempre terminam ou se sempre entram em um
+laço infinito. Tente embasar suas repostas usando os axiomas e regras da Tabela 2.1.
+
+R.:
+. Pode entrar em um laço infinito caso o valor de x seja menor que 1.
+. Sempre termina, uma vez que a condição do laço é 1 ≤ x, e x está sendo decrementado.
+. Sempre entra em um laço infinito. Nesse caso temos: Sns [[while true do skip]] s = undef
+para todos os estados s.

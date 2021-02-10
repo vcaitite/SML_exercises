@@ -1,0 +1,8 @@
+Parte 2 - Exercício 4:
+
+4) Dado o programa
+z := 0; while y ≤ x do (z := z+1; x := x-y)
+construa uma árvore de derivação para este programa quando executado
+em um estado em que x tem valor 17 e y tem valor 5.
+
+R.

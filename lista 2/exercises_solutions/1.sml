@@ -33,9 +33,3 @@ fun eval (IConst i) = i
   | eval (Min(e1, e2)) = if ((eval e1) > (eval e2)) then (eval e2) else (eval e1)
   | eval (Eq(e1, e2)) = if ((eval e1) = (eval e2)) then 1 else 0
   | eval (Gt(e1, e2)) = if ((eval e1) > (eval e2)) then 1 else 0;
-
-val e1 = Max(IConst 3, Plus(IConst 2, IConst 3));
-val e2 = Div(Multi(IConst 5, IConst 4), Minus(IConst 4, IConst 4));
-
-eval e1;
-eval e2;

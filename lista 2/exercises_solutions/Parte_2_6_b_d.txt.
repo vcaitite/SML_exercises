@@ -1,0 +1,11 @@
+Parte 2 - Exercício 6:
+
+(a)Estenda o interpretador com o tratamento do comando while, seguindo a semântica
+da Tabela 2.1.
+(b) Estenda a linguagem com o comando
+repeat S until b
+e defina a relação → para ele. (A semântica de repeat não deve utilizar o operador
+while da linguagem).
+(c) Estenda o interpretador acima para o comando repeat.
+(d) Demonstre que repeat S until b e S ; if b then skip else (repeat S until b) são
+semanticamente equivalentes.

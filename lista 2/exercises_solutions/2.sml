@@ -17,5 +17,3 @@ fun eval (RConst i) = i
 (* Se desejar maior precisão pode-se utilizar Math.pi ao invés de 3.14 no 
 cálculo da área do círculo. Utilizou-se 3.14 para obter um resultado 
 correspondente ao mostrado no enunciado da lista. *)
-val e = ACirculo(RConst 2.0);
-eval e;
