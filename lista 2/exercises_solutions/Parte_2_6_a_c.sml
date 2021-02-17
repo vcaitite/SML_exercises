@@ -31,7 +31,8 @@ datatype Stm = Assign of Var * Aexpr
              | Skip
              | Comp of Stm * Stm
              | If of Bexpr * Stm * Stm
-             | While of Bexpr * Stm ;
+             | While of Bexpr * Stm
+             | Repeat of Stm * Bexpr ;
 
 fun evalN n : Num = n
 
@@ -58,5 +59,18 @@ fun evalStm ( stm : Stm ) ( s : ( string * int ) list ) : ( string * int ) list 
     | Skip => s
     | ( Comp ( stm1 , stm2 ) ) => evalStm stm2 ( evalStm stm1 s )
     | ( If (b , stm1 , stm2 ) ) => if ( evalB b s ) then evalStm stm1 s else evalStm stm2 s
-    (* | While (b , stm ) = > ... *)
-    | _ => raise Match ;
+    | ( While (b , stm1 ) ) =>
+        if ( evalB b s ) then
+          let
+            val newS = evalStm stm1 s;
+          in
+            evalStm stm newS
+          end
+        else s
+    | ( Repeat ( stm1 , b ) ) =>
+        let
+          val newS = evalStm stm1 s
+          val evB = evalB b newS;
+        in
+          if evB then newS else evalStm stm newS
+        end;

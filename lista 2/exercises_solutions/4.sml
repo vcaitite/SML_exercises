@@ -17,8 +17,26 @@ fun simplify (IConst e) = (IConst e)
   | simplify (Op2 (Sub, e1, e2)) = if (e1 = e2) then IConst 0 else Op2(Sub, (simplify e1), (simplify e2))
   | simplify (Op2 (Or, e1, e2)) = if (e1 = e2) then simplify e1 else Op2(Or, simplify e1, simplify e2)
   | simplify (Op1 (Not, Op1(Not, e))) = simplify e
-  | simplify (Op2 (e, (IConst e1), (IConst e2))) = (Op2 (e, (IConst e1), (IConst e2)))
-  | simplify (Op2 (e, e1, IConst e2)) = (simplify (Op2 (e, simplify e1, IConst e2)))
-  | simplify (Op2 (e, IConst e1, e2)) = (simplify (Op2 (e, IConst e1, simplify e2)))
-  | simplify (Op2 (e, e1, e2)) = simplify (Op2(e, simplify e1, simplify e2))
-  | simplify (e) = e;  
+  | simplify e = case e of ( Op1 ( OP , e1 ) ) =>
+                  let 
+                    val f1 = (simplify e1);
+                  in
+                    if ( f1 = e1 ) then
+                      e
+                    else
+                      simplify ( Op1 ( OP , f1 ) )
+                  end
+                | ( Op2 ( OP , e1 , e2 ) ) =>
+                  let
+                    val f1 = simplify e1 
+                    val f2 = simplify e2;
+                  in
+                    if ( f1 = e1 ) andalso ( f2 = e2 ) then
+                      e
+                    else
+                      simplify ( Op2 ( OP , f1 , f2 ) )
+                  end
+                | _ => e;
+                
+  
+  
