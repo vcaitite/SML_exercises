@@ -1,0 +1,37 @@
+Exercício 3:
+
+3) Considerando os diferentes tipos de memória em C:
+
+(a) Classifique qual tipo de memória está sendo utilizada para cada variável do pro-
+grama em C apresentado a seguir;
+
+Variáveis:                Memória:			
+valor_inicial             Memória Estática
+valor_intermediario       Memória Estática
+taxa                      Memória Dinâmica - Stack 
+valores                   Memória Dinâmica - Heap
+
+
+(b) Apresente quais valores serão gerados para a lista construı́da ao fim da execução.
+
+Ao final da execução teremos valores = [25 75 15].
+
+
+
+Programa:
+____________________________________________________________________________
+int valor_inicial = 10;
+int valor_intermediario = 5;
+
+void calcula ( int * valores ) {
+  int taxa = 3;
+  valores [0] = valor_inicial + valor_intermediario * taxa ;
+  valores [1] = valores [0] * 3;
+}
+
+int main () {
+  int * valores = ( int *) malloc (3 * sizeof ( int ) ) ;
+  calcula ( valores ) ;
+  valores [2] = valor_inicial + valor_intermediario ;
+}
+____________________________________________________________________________

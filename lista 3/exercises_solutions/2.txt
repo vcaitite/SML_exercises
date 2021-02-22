@@ -1,0 +1,14 @@
+Exercício 2:
+
+2) Marque V ou F para as alternativas que definem as caracterı́sticas de cada tipo de
+memória em C:
+
+ a) (V) Memória Estática tem gerenciamento automático.
+ b) (F) Memória dinâmica é representada como uma pilha com gerenciamento manual.
+ c) (F) Memória dinâmica é representada como uma heap com gerenciamento automático.
+ d) (F) Memória Dinâmica não é flexı́vel.
+ e) (V) Memória dinâmica tem gerenciamento mais complexo do que memória estática.
+ f) (V) Memória estática armazena variáveis globais.
+ g) (F) Memória Dinâmica é representada como uma pilha com gerenciamento automático.
+ h) (F) Memória dinâmica é representada como uma heap com gerenciamento manual.
+

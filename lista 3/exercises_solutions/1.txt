@@ -1,0 +1,12 @@
+Exercício 1:
+
+1) Quais componentes de um programa devem ser armazenados na memória?
+
+(a) As variáveis, funções e seus resultados
+-> (b) O programa em si e os estados que ele mantém
+(c) O estado e os resultados de funções
+(d) As variáveis e suas atribuições
+
+OBS.: A resposta marcada com "->" é a certa. Na memória são armazenados o programa em si 
+(ou seja, as operações a serem executadas) e o estado do programa (valores manipulados por 
+essas operações).

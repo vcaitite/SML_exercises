@@ -1,0 +1,32 @@
+Exercício 4:
+
+4) Cite três exemplos de coletores de lixos que podem ser utilizados por uma linguagem
+de programação. Apresente um exemplo de aplicação para o qual um dos modelos, à
+sua escolha, é o mais adequado e justifique.
+
+Exemplos de coletores de lixo:
+
+- Mark-and-Sweep -> Em primeiro lugar, ele deve ser capaz de detectar todos os objetos inacessíveis e, em segundo lugar, 
+deve recuperar o espaço de heap usado pelos objetos de lixo e disponibilizar o espaço novamente para o programa. Ou seja,
+o algoritmo possui 2 fases, a primeira (conhecida como marcação) busca marcar todos os blocos da memória relevante, e a
+segunda remove os blocos que não são relevantes. 
+
+- Copying Collector -> Nesse caso a heap é dividida em 2 partes, com uma parte usada de cada vez. Quando a parte usada enche,
+copia-se, então, apenas os blocos relevantes para a segunda parte e remove a primeira. Após fazer a cópia, as posições de 
+memória originais são liberadas, deixando assim novamente uma uma parte livre para a próxima rodada. 
+  
+- Reference Counting -> Esse coletor de lixo funciona basicamente da seguinte forma: Em cada objeto, mantenha uma contagem
+do número de referências ao objeto. (Adicione 1 ao copiar a referência, subtraia 1 ao limpar ou alterar uma referência.)
+Quando a contagem cair para zero, mate o objeto. 
+
+
+Exemplo de aplicação:
+O exemplo escolhido é um sistema de processamento em tempo real que dispõe de um espaço de memória limitado e não necessita
+de um alto desempenho porém não pode tolerar pausas longas de Garbage Collection. Devido a essa última restrição já se exclui
+o método "Copying Collector", pois como ele requer copiar todos os blocos relevantes de uma seção para outra isso resultaria 
+em uma pausa longa de Garbage Collection. Além disso, o algoritmo "Mark-and-Sweep" também provoca pausas, apesar de elas serem 
+menores que as do "Copying Collector" isso não é interessante para sistemas em tempo real, e como a memória disponível é limitada
+(ou seja, não podemos perder espaços com lixos, fazendo assim com que pausas sejam constantes para retirá-los) esse algoritmo 
+também não é o ideal para a aplicação. Por fim, o "Reference Counting" oferece um desempenho mais consistente, sem pausas, e 
+apesar de ele adicionar um custo extra para manutenção de contadores isso não é crítico para a aplicação visto que ela não exige
+alto desempenho. Conclui-se então que nessa situação o modelo escolhido deve ser o Reference "Counting". 

@@ -1,0 +1,106 @@
+Exercício 7:
+
+7) Muitas linguagens de programação não possuem qualquer mecanismo de coleta automática de lixo. Um exemplo tı́pico é C++. 
+Ainda assim, é possı́vel programar de forma mais segura via bibliotecas. Uma estratégia comumente adotada em C++ é baseada
+no uso de ponteiros desalocados automaticamente. Uma possı́vel implementação deste tipo de ponteiro é dada logo abaixo:
+
+template < class T > class auto_ptr {
+  private : T * ptr ;
+  public :
+    explicit auto_ptr ( T * p = 0) : ptr ( p ) { }
+    ~ auto_ptr () { delete ptr ; }
+    T & operator *() { return * ptr ; }
+    T * operator ->() { return ptr ; }
+};
+
+(a) A classe auto ptr utiliza pelo menos dois tipos diferentes de polimorfismo. Que tipos de polimorfismos são estes?
+
+R. Utiliza os tipos de polimorfismo sobrecarga (overloading) e sobreescrita (overridind).
+
+
+(b) A função abaixo contém um problema de memória ou não? Em caso afirmativo, explique que falha é esta. Utilize a 
+ferramenta valgrind para analisar este programa, por exemplo, tentando o comando valgrind -v ./a.out. Considere que uma
+falha de memória leva valgrind a fornecer algum aviso. Caso o erro não exista, justifique a sua resposta:
+
+void foo0 () {
+  auto_ptr<std::string>  p(new std::string(" I did one P . O . F !\n"));
+  std::cout << *p;
+}
+
+R. Não contém problema de memória. Como o ponteiro alocado em foo0 é desalocado automaticamente (pela implementação mostrada),
+não se tem nenhum vazamento ou problema de memória. Pode-se ver pela saída do valgrind (mostrada abaixo) que nenhum vazamento
+ocorreu: 
+
+==23003== HEAP SUMMARY:
+==23003==     in use at exit: 0 bytes in 0 blocks
+==23003==   total heap usage: 4 allocs, 4 frees, 73,784 bytes allocated
+==23003== 
+==23003== All heap blocks were freed -- no leaks are possible
+==23003== 
+==23003== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==23003== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+(c) Novamente: problema de memória ou não? Em caso afirmativo, explique que falha é esta. Em caso negativo, justifique.
+Note que exceções, neste caso, funcionam como em Java ou Python:
+
+void foo1 () {
+  try {
+    auto_ptr<std::string> p(new std :: string ( " Oi !\n " )) ;
+    throw 20;
+  } catch (int e) {std :: cout << " Oops : " << e << " \n ";}
+}
+
+R. Novamente não ocorre nenhum problema de memória. Esse caso é similar ao anterior e apesar de nesse caso ser lançada
+uma exceção, ainda sim o vetor alocado será desalocado automaticamente e nenhum problema ocorrerá. Novamente pôde-se
+confirmar isso utilizando o valgrind: 
+
+==23829== HEAP SUMMARY:
+==23829==     in use at exit: 0 bytes in 0 blocks
+==23829==   total heap usage: 4 allocs, 4 frees, 73,892 bytes allocated
+==23829== 
+==23829== All heap blocks were freed -- no leaks are possible
+==23829== 
+==23829== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==23829== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+(d) Última pergunta: problema de memória ou não? Em caso afirmativo, explique que falha é esta. Em caso negativo,
+justifique a sua resposta:
+
+void foo2 () {
+  try {
+    std::string *p = new std::string (" Oi !\n ") ;
+    throw 20;
+    delete p;
+  } catch ( int e ) {std::cout << " Oops : " << e << " \n " ; }
+}
+
+R. Nesse caso ocorre um problema de vazamento se mémória, pois como a exceção é lançada antes de se fazer delete p,
+então essa instrução nunca é executada e consequentemente a memória nunca foi liberada. Repare que o ponteiro não
+foi declarado como um ponteiro de desalocação automática. O resultado do valgrind foi: 
+
+==24893== HEAP SUMMARY:
+==24893==     in use at exit: 32 bytes in 1 blocks
+==24893==   total heap usage: 4 allocs, 3 frees, 73,892 bytes allocated
+==24893== 
+==24893== Searching for pointers to 1 not-freed blocks
+==24893== Checked 111,784 bytes
+==24893== 
+==24893== LEAK SUMMARY:
+==24893==    definitely lost: 32 bytes in 1 blocks
+==24893==    indirectly lost: 0 bytes in 0 blocks
+==24893==      possibly lost: 0 bytes in 0 blocks
+==24893==    still reachable: 0 bytes in 0 blocks
+==24893==         suppressed: 0 bytes in 0 blocks
+==24893== Rerun with --leak-check=full to see details of leaked memory
+==24893== 
+==24893== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==24893== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Como pode-se notar existe um bloco que não foi desalocado (leaked memory). 
+
+
+  
+
+
