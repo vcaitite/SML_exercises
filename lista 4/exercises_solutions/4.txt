@@ -1,0 +1,25 @@
+Exercício 4:
+
+4) Considere o método removeAll abaixo e responda:
+
+def removeAll ( s ) :
+    """ Removes all the elements from the data structure . """  
+    while ( s . isNotEmpty () ) :
+    print ( s . remove () )
+
+(a) Qual o “contrato” que deve ser garantido pelos objetos passados para este método?
+Isto é, pelos elementos de s passado para o método?
+
+R. Os objetos passados para esse método devem possuir os métodos isNotEmpty() e remove(). 
+
+(b) O que significa a expressão duck typing? E qual sua relação com este método?
+
+R. A expressão duck typing busca fazer paralelo do teste do pato ("If it walks like a 
+duck and it quacks like a duck, then it must be a duck") com programação OO, para determinar
+se um objeto pode ser usado para um propósito específico. Nesse estilo,  a adequação de um 
+objeto é determinada pela presença de certos métodos e propriedades, em vez do tipo do próprio
+objeto. A relação disso com o método é que ele nâo define exatamente o tipo do parâmetro 
+recebido, entretanto o objeto passado deve possuir os métodos isNotEmpty() e remove(), pois 
+esses são utilizados dentro do método em questão. Vale notar que tanto os objetos da classe
+Queue, quanto os objetos da classe Stack, definidas anteriormente, seriam válidos, uma vez que 
+ambas as classes implementam os métodos utilizados na função removeAll().  

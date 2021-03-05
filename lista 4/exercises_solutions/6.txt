@@ -1,0 +1,11 @@
+Exercício 6:
+
+6) Acerca de orientação a objetos, descreva o que é o “Problema do Diamante”.
+
+R. O "Problema do Diamante" é uma ambiguidade que surge quando duas classes 
+B e C herdam de A, e a classe D herda de B e C. Ou seja ocorre quando 
+duas classes diferentes herdam a mesma classe e, por sua vez, uma 4ª classe 
+herda as duas classes que herdaram a primeira classe. Com isso a quarta classe
+poderá possuir diferentes versões de um método, fazendo assim que as linguagens
+optem por algum critério de qual método utilizar quando não houver nenhuma 
+especificção explícita. 

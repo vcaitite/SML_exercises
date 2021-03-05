@@ -1,0 +1,22 @@
+Exercício 5:
+
+5) Considere o programa apresentado na lista e responda o que acontecerá 
+em cada linha numerada. As opções possı́veis são:
+
+(i) Algo será impresso. Neste caso, escreva o que será impresso.
+(ii) Um erro será produzido em tempo de execução.
+
+R.
+#1  - Será impresso:  Pavao  is an animal 
+#2  - Será impresso:  Tigre  is a mammal 
+#3  - Será impresso:  Krypto  is a dog
+#4  - Será impresso:  Pavao  , which is an animal , is eating . 
+#5  - Será impresso:  Tigre  , which is a mammal , is sucking milk .
+#6  - Será impresso:  Tigre  , which is an animal , is eating . 
+#7  - Será impresso:  Krypto  is barking rather loudly .
+#8  - Será impresso:  Krypto  , which is a mammal , is sucking milk . 
+#9  - Será impresso:  Krypto  barks when it eats . 
+#10 - Um erro será produzido em tempo de execução. Pois Animal não possui o método bark.
+#11 - Considerando que o erro anterior foi removido, será impresso: 
+      Krypto  is barking rather loudly .
+
