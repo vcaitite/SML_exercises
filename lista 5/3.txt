@@ -1,0 +1,39 @@
+Exercise 3
+Vítor Gabriel Reis Caitité - 2016111849
+
+3) Um dos mecanismos de passagem de parâmetros é chamado de passagem por nome.
+Nesse tipo de passagem, os parâmetros não são avaliados imediatamente. Cada parâmetro
+real é avaliado no contexto da chamada da função, no momento em que são usados.
+Esta ideia foi lançanda em Algol, e também teve seu uso em Simula. Apesar de ter
+sido abandonado por ser muito difı́cil de implementar, coisas interessantes podem ser
+feitas utilizando passagem por nome. Considere o programa abaixo, escrito em Simula,
+onde os parâmetros k e u são passados por nome.
+
+Integer Procedure Sigma (k ,m ,n , u ) ;
+	Name k , u ;
+	Integer k ,m ,n , u ;
+Begin
+	Integer s ;
+	k := m ;
+	While k <= n Do Begin s := s + u ; k := k + 1 ; End ;
+	Sigma := s ;
+End ;
+ 
+(a) Qual o valor de Z na chamada abaixo?
+
+Integer Z ;
+Integer i ;
+Z := Sigma (i ,1 ,4 , i **2) ;
+
+R. Z =  1+4+9+16 = 30.
+
+(b) Explique o que o programa abaixo faz. Não precisa escrever o valor calculado,
+apenas dizer o que ele calcula.
+
+Integer Z ;
+Integer i ;
+a := io . read_integer () ;
+Z := Sigma (i ,1 ,100 , 1 / ( i + a ) **2) ;
+
+R.  Esse programa calcula o somatório de 1/((i+a)^2) com i variando de 1 a 100.
+	

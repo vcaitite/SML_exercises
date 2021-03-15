@@ -1,0 +1,20 @@
+Exercise 4
+Vítor Gabriel Reis Caitité - 2016111849
+
+4. Acerca de passagem de parâmetros em C/C++, responda:
+
+(a) É preferı́vel que alguns parâmetros sempre sejam passados por referência, se
+possı́vel, dependendo do seu tipo. Cite um exemplo de tipo de variável em C/C++
+em que a passagem por referência seja a melhor escolha e explique por que esta é
+a melhor opção.
+
+R. Como vimos, o processo de passagem de parâmetros por referência é eficiente, sem cópia
+e sem armazenamento duplicado. Um caso onde esse tipo de passagem é a melhor escolha é 
+quando se tem uma grande restrição de uso de memória e deseja-se passar para uma função
+uma variavel que guarde um grander volume de dados. Nesse caso, para evitar uma cópia desses dados
+e consumir mais memória, o ideal é passar a variável por referência para a função.  
+
+(b) Em qual região de memória são armazenados os parâmetros passados por valor?
+
+R. Stack.
+

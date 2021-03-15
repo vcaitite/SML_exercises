@@ -1,0 +1,62 @@
+Exercise 5
+Vítor Gabriel Reis Caitité - 2016111849
+
+5. Considere a classe abaixo, implementada em Java:
+
+class MyInt {
+  int i;
+  MyInt(int k) {
+    i = k;
+  }
+ 
+  void swap1(MyInt j) {
+    MyInt tmp = j;
+    j = new MyInt(i);
+    i = tmp.i;
+  }
+
+  void swap2(MyInt j) {
+    MyInt tmp = j;
+    j.i = i;
+    i = tmp.i;
+  }
+
+  void swap3(int j) {
+    int tmp = j;
+    j = i;
+    i = tmp;
+  }
+}
+
+Cada uma das próximas questões é completamente independente uma das outras. Estas
+questões devem ser respondidas com base nas definições abaixo:
+
+MyInt m1 = new MyInt(3);
+MyInt m2 = new MyInt(4);
+
+(a) Qual é o valor de m1.i e m2.i depois da chamada m1.swap1(m2)?
+
+R. 
+m1.i = 4
+m2.i = 4
+
+(b) Qual é o valor de m1.i e m2.i depois da chamada m1.swap2(m2)?
+
+R.
+m1.i = 3
+m2.i = 3 
+
+(c) Qual é o valor de m1.i e m2.i depois da chamada m1.swap3(m2.i)?
+
+R. 
+m1.i = 4
+m2.i = 4
+
+(d) Qual é o tipo de passagem da parâmetros que Java adota para tipos primitivos
+(int, float, char, etc)?
+
+R. Passagem por valor.
+
+(e) Qual é o tipo de passagem da parâmetros que Java adota para objetos?
+
+Java suporta apenas passagem por valor. Contudo, variáveis de tipos de objeto guardam referências para objetos na memória. O que isso quer dizer, no final das contas, é que em Java toda variável de um tipo objeto contém não o próprio objeto, mas uma referência para o objeto real. Essa referência pode ser copiada para outras variáveis, o que faz com que elas também passem a referenciar o mesmo objeto. Dessa forma, mesmo que a passagem seja por valor, objetos podem ser alterados, visto que o que se passa por valor nada mais é que a referência para o objeto real.  

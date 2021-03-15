@@ -1,0 +1,57 @@
+Exercise 2
+Vítor Gabriel Reis Caitité - 2016111849
+
+2) A passagem de parâmetros por expansão de macros é um mecanismo bastante utilizado
+em C. Um exemplo é dado abaixo:
+
+
+#define SUM (X , Y ) ( X ) + ( Y )
+int main ( int argc , char ** argv ) {
+    printf ( "sum = %d\n" , SUM ( argc , argv [0][0]) ) ;
+}
+
+
+(a) Macros são expandidas por um componente do compilador chamado pré-processador.
+Escreva o código do programa acima após o pré-processamento.
+
+R. Após se passar pelo pré-processador, tem-se:
+ 
+int main(int argc, char** argv) {
+    printf("sum = %d\n", argc + argv[0][0]);
+}
+
+
+(b) Um dos problemas com expansão de macros é a chamada captura de variáveis.
+Explique o que é esse problema.
+
+R. Esse problema ocorre se existe uma variável local da macro nomeada com o mesmo nome de uma variável do escopo onde a macro foi chamada. Isso pode gerar um comportamento diferente do esperado após a substituição dos parâmetros formais da macro pelos parâmetros do escopo. Um exemplo onde esse problema ocorre pode ser visto abaixo:
+
+#define INCI(i) do { int a=0; ++i; } while (0) 
+int main(void) { 
+  int a = 4, b = 8;
+  INCI(a);
+  INCI(b);
+  printf("a is now %d, b is now %d\n", a, b); 
+  return 0;
+} 
+fonte: https://pt.qaz.wiki/wiki/Hygienic_macro
+
+(c) Um outro problema é a múltipla avaliação de parâmetros. Essa múltipla avaliação
+faz com que o programa possa ter um significado diferente da intenção do programador. Escreva um programa em C que prove que parâmetros de macros são avaliados múltiplas vezes.
+
+R. Abaixo mostra-se um exemplo de múltipla avaliação dos parâmetros. Pelo print pode-se notar que a 
+função fun foi executada 2 vezes.
+ 
+#include <stdio.h>
+#define VALUE(X) { if (X == 0) {X;} else {10;} }
+
+int fun() {
+    printf("Execução de fun()\n");	
+    return 0;
+}
+
+void main(){
+    VALUE(fun());
+}
+
+

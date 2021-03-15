@@ -1,0 +1,22 @@
+Exercise 1
+Vítor Gabriel Reis Caitité - 2016111849
+
+1) Considerando o programa em C++ no enunciado.
+
+(a) Qual o valor impresso pelo programa? Lembre-se que C++ possui escopo estático.
+
+R. Será impresso 5.
+
+(b) Suponha que nós modifiquemos a declaração de p tal que os parâmetros sejam
+passados por referência. Isto é, p(int &y, int &z){...}. Qual o valor impresso
+neste caso? Justifique.
+
+b) Será impresso 7 pois como C++ tem escopo estático, ao se chamar p(x,x), ambos os parâmetros "y" e "z" estarão usando a referência da variável x declarada em main(). Assim, a cada instrução de p teremos os seguintes resultados:
+
+x = x+1; -> x = 0 + 1 = 1 
+y = y+1; -> y = 1 + 1 = 2
+z = z+1; -> z = 2 + 1 = 3
+
+Logo:
+printf ( "%d\n", x + y + z ); -> printf("%d\n", 1+3+3) -> printf("%d\n", 7)
+
